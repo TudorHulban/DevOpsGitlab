@@ -29,4 +29,8 @@ Register the runner as per Admin Area / Overview / Runners / Show Runner install
 ```
 sudo gitlab-runner register --url http://172.30.0.5/ --registration-token fvxNvA9N2WSkHn6bv4ys
 ```
+### Resources
+```
+https://serverfault.com/a/1020417
+```
 
