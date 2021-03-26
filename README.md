@@ -14,7 +14,19 @@ Connect to the container running the Gitlab runner
 ```
 docker exec -it <container ID> /bin/bash
 ```
+## Add Runner
+### Configure runnner network
+In `/etc/gitlab-runner/config.toml` add the Docker Compose created network:
+```
+[runners.docker]
+   network mode= "gitlab"
+```
+Restart runner container
+```
+docker restart <container ID>
+```
 Register the runner as per Admin Area / Overview / Runners / Show Runner installation instructions. Token as per run.
 ```
 sudo gitlab-runner register --url http://172.30.0.5/ --registration-token fvxNvA9N2WSkHn6bv4ys
 ```
+
