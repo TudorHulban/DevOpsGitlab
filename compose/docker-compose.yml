@@ -1,8 +1,8 @@
-version: '3.5'
+version: '3.7'
 services:
   gitlab:
     image: gitlab/gitlab-ce:latest
-    hostname: 127.0.0.1
+    hostname: 172.30.0.5
     restart: unless-stopped
     environment:
       GITLAB_OMNIBUS_CONFIG: |
@@ -15,7 +15,8 @@ services:
       - ./data/gitlab:/var/opt/gitlab
       - ./logs:/var/log/gitlab
     networks:
-      - gitlab
+      gitlab:
+       ipv4_address: 172.30.0.5
 
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
@@ -26,7 +27,13 @@ services:
       - ./config/gitlab-runner:/etc/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - gitlab
+      gitlab:
+       ipv4_address: 172.30.0.7
 
 networks:
   gitlab:
+   name: gitlab
+   ipam:
+     driver: default
+     config:
+       - subnet: "172.30.0.0/24"
