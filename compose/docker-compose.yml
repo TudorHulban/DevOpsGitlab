@@ -3,6 +3,7 @@ services:
   gitlab:
     image: gitlab/gitlab-ce:latest
     hostname: 172.30.0.5
+    container_name: gitlabce
     restart: unless-stopped
     environment:
       GITLAB_OMNIBUS_CONFIG: |
@@ -20,6 +21,7 @@ services:
 
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
+    container_name: runner
     restart: unless-stopped
     depends_on:
       - gitlab
