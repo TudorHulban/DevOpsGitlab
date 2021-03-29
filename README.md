@@ -68,6 +68,7 @@ https://docs.gitlab.com/runner/register/#one-line-registration-command
 
 ## Add PlantUML
 ```
+https://docs.gitlab.com/ee/administration/integration/plantuml.html#configure-your-plantuml-server
 https://www.youtube.com/watch?v=V4dHQWRoeM0
 ```
 
