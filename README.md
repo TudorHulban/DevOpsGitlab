@@ -63,5 +63,6 @@ check_interval = 0
 ### Resources
 ```
 https://serverfault.com/a/1020417
+https://docs.gitlab.com/runner/register/#one-line-registration-command
 ```
 
