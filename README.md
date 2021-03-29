@@ -24,11 +24,40 @@ sudo gitlab-runner register --url http://172.30.0.5/ --registration-token fvxNvA
 In `/etc/gitlab-runner/config.toml` add the Docker Compose created network:
 ```
 [runners.docker]
-   network mode= "gitlab"
+   network_mode= "gitlab"
 ```
 ### Restart runner container
 ```
 docker restart <container ID>
+```
+### Example
+```
+concurrent = 1
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "f8dfb8769f23"
+  url = "http://172.30.0.5/"
+  token = "RdmPzTQzj1dmA-Ai1LgS"
+  executor = "docker"
+  [runners.custom_build_dir]
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]
+    [runners.cache.azure]
+  [runners.docker]
+    tls_verify = false
+    image = "golang:latest"
+    privileged = false
+    disable_entrypoint_overwrite = false
+    oom_kill_disable = false
+    disable_cache = false
+    volumes = ["/cache"]
+    shm_size = 0
+    network_mode = "gitlab"
 ```
 
 ### Resources
