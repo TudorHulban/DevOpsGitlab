@@ -8,6 +8,8 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         gitlab_rails['gitlab_shell_ssh_port'] = 8822
+        nginx['custom_gitlab_server_config'] = "location /-/plantuml/ { \n    proxy_cache off; \n    proxy_pass  http://172.30.0.9:8080/; \n}\n"
+
     ports:
       - "8000:80"
       - "8822:22"
@@ -31,6 +33,13 @@ services:
     networks:
       gitlab:
        ipv4_address: 172.30.0.7
+
+  plantuml:
+    image: 'plantuml/plantuml-server:tomcat'
+    container_name: plantuml
+    networks:
+      gitlab:
+       ipv4_address: 172.30.0.9
 
 networks:
   gitlab:
