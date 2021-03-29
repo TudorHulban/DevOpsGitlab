@@ -37,6 +37,9 @@ services:
   plantuml:
     image: 'plantuml/plantuml-server:tomcat'
     container_name: plantuml
+    
+    ports:
+      - "8080:8080"
     networks:
       gitlab:
        ipv4_address: 172.30.0.9
