@@ -67,6 +67,23 @@ https://docs.gitlab.com/runner/register/#one-line-registration-command
 ```
 
 ## Add PlantUML
+In `/etc/gitlab/gitlab.rb` add below and run `gitlab-ctl reconfigure`:
+```
+nginx['custom_gitlab_server_config'] = "location /-/plantuml/ { \n    proxy_cache off; \n    proxy_pass  http://192.168.1.9:8080/; \n}\n"
+gitlab_rails['env'] = { 'PLANTUML_ENCODING' => 'deflate' }
+```
+Verify PlantUML is working on HTTP at ex. `http://localhost:8080`.<br/>
+Configure this link in Gitlab Admin Area / Settings / Gemeral / PlantUML.<br/>
+In case it does not work the idea is to verify the image URL in Gitlab and tune it to have a PlantUML render.
+
+### Add the drawing
+```plantuml
+@startuml
+Bob -> Alice : hello
+@enduml
+```
+
+### Resources
 ```
 https://docs.gitlab.com/ee/administration/integration/plantuml.html#configure-your-plantuml-server
 https://www.youtube.com/watch?v=V4dHQWRoeM0
