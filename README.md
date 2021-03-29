@@ -1,5 +1,5 @@
 # DevOpsGitlab
-Concentrating Devops knowledge with Gitlab Ci / CD
+Concentrating Devops knowledge with Gitlab Ci / CD targeting mainly Go projects.
 
 ## Start
 Change to `compose` folder and run:
