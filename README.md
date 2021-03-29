@@ -66,3 +66,8 @@ https://serverfault.com/a/1020417
 https://docs.gitlab.com/runner/register/#one-line-registration-command
 ```
 
+## Add PlantUML
+```
+https://www.youtube.com/watch?v=V4dHQWRoeM0
+```
+
